@@ -12,6 +12,13 @@ class App extends Component {
       input: event.target.value,
     })
   }
+
+  handleClick = () => {
+    this.setState({
+      input: '',
+    });
+    this.props.dispatch({ type: 'ADD_ELEMENT', payload: this.state.input }) 
+  }
    
 
   render() {
@@ -22,7 +29,7 @@ class App extends Component {
         <button onClick={() => { this.props.dispatch({ type: 'BUTTON_TWO' }) }}> Button Two </button>
        <input value={this.state.input} onChange={this.handleChange} placeholder="Element Name"></input>
         <button 
-          onClick={() => { this.props.dispatch({ type: 'ADD_ELEMENT', payload: this.state.input }) }}
+          onClick={this.handleClick}
         >
           Add element
           </button>
