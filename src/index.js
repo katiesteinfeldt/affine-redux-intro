@@ -4,23 +4,24 @@ import App from './components/App/App';
 import { createStore, combineReducers } from 'redux';
 import { Provider } from 'react-redux';
 
-let count = 0;
-const firstReducer = (state, action) => {
+
+const firstReducer = (state = 0, action) => {
     if (action.type === 'BUTTON_ONE') {
         console.log('Button One was clicked');
         console.log(state);//whatever we return from our reducer, we are adding to our redux state or whatever you return from the first time is what your state is going to be the next time
-        count++;
+        state ++;
     }
-    return count;
+    return state;
 };
 
-const secondReducer = (state, action) => {
+const secondReducer = (state = 100, action) => {
     if (action.type === 'BUTTON_TWO'){
         console.log(`Button Two was clicked`); 
         console.log(state);
+        state --;
     }
     
-    return 100;
+    return state;
 }
 
 const elementListReducer = (state, action) => {
