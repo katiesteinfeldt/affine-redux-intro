@@ -13,7 +13,7 @@ const firstReducer = (state = 0, action) => {
     }
     return state;
 };
-
+//default value is set to 100. if it doesn't have a value it will be 100
 const secondReducer = (state = 100, action) => {
     if (action.type === 'BUTTON_TWO'){
         console.log(`Button Two was clicked`); 
@@ -24,12 +24,14 @@ const secondReducer = (state = 100, action) => {
     return state;
 }
 
-const elementListReducer = (state, action) => {
+const elementListReducer = (state = [], action) => {
     if (action.type === 'ADD_ELEMENT') {
         console.log(`Add Element was clicked`);
+        state = [...state, action.payload];
     }
-    return {};
+    return state;
 }
+
 
 const storeInstance = createStore(
     combineReducers({
